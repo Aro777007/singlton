@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+#include <vector>
+
+template<typename t>
+class Singleton {
+private:
+    Singleton()
+    {
+        cout << "constructor" << endl;
+    }
+
+    ~Singleton()
+    {
+        cout << "destructor" << endl;
+    }
+
+public:
+    static Singleton& createobject()
+    {
+        static Singleton s; 
+        return s;
+    }
+
+
+    void get_data()
+    {
+        int a = 3;
+        vector <t> vec = { 1,2,3,4,5 };
+        for (int i = 0; i < vec.size(); ++i)
+        {
+            if (vec[i] > a)
+            {
+                cout << a << " ";
+            }
+        }
+    }
+
+    void set_data()
+    {
+        vector <t> myvec = { 0, 5, 10};
+        for (int i = 0; i < myvec.size(); ++i)
+        {
+            cout << myvec[i];
+        }
+    }
+
+};
+
+int main() {
+    Singleton<int>& singleton = Singleton<int>::createobject();
+    singleton.get_data();
+    singleton.set_data();
+
+    return 0;
+}
